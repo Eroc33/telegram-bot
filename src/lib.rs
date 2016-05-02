@@ -158,6 +158,28 @@ impl Api {
         // Execute request with empty parameter list
         self.send_request("getMe", Params::new(), RequestType::Post)
     }
+    
+    //corresponds to the "kickChatMemeber" method of the API.
+    pub fn kick_chat_member(&self, chat_id: Integer,user_id: Integer) -> Result<bool> {
+      // Prepare parameters
+      let mut params = Params::new();
+      params.add_get("chat_id", chat_id);
+      params.add_get("user_id", user_id);
+      
+      // Execute request
+        self.send_request("kickChatMember", params, RequestType::Post)
+    }
+    
+    //corresponds to the "unbanChatMember" method of the API.
+    pub fn kick_chat_member(&self, chat_id: Integer,user_id: Integer) -> Result<bool> {
+      // Prepare parameters
+      let mut params = Params::new();
+      params.add_get("chat_id", chat_id);
+      params.add_get("user_id", user_id);
+      
+      // Execute request
+        self.send_request("unbanChatMember", params, RequestType::Post)
+    }
 
     /// Corresponds to the "sendMessage" method of the API.
     pub fn send_message(&self, chat_id: Integer, text: String,
